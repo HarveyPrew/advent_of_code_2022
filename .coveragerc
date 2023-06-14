@@ -1,5 +1,5 @@
 [run]
-source = alan_pytridge
+source = advent_of_code_2022
 branch = True
 [report]
 fail_under = 100
