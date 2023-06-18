@@ -2,7 +2,8 @@ from advent_of_code_2022.elf import Elf
 
 
 def get_file(path):
-    return open(path)
+    with open(path, "r") as reader:
+        return reader.read()
 
 
 def create_elves():

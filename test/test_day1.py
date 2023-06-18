@@ -28,4 +28,4 @@ def test_highest_caloried_elf_info_is_correct():
 
 def test_file_opens():
     opened_file = get_file('input_day_1.txt')
-    assert opened_file is not None
+    assert "6110" in opened_file
