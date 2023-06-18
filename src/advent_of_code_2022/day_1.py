@@ -23,14 +23,16 @@ def get_calorie_list(path):
     return calories
 
 
-def create_elves():
-    elves = [
-        Elf(1, [1000, 2000, 3000]),
-        Elf(2, [4000]),
-        Elf(3, [5000, 6000]),
-        Elf(4, [7000, 8000, 9000]),
-        Elf(5, [10000])
-    ]
+def create_elves(path):
+    calories = get_calorie_list(path)
+    elves = []
+    elf_number = 1
+
+    for element in calories:
+        elf = Elf(elf_number, element)
+        elves.append(elf)
+        elf_number += 1
+
     return elves
 
 
@@ -38,8 +40,7 @@ def find_elf_with_most_calories(elves):
     return max(elves, key=lambda elf: elf._calculate_total_calories())
 
 
-def get_highest_caloried_elf_info():
-    elves = create_elves()
+def get_highest_caloried_elf_info(elves):
     highest_caloried_elf = find_elf_with_most_calories(elves)
     elf_id = highest_caloried_elf.ID
     calories = highest_caloried_elf._calculate_total_calories()
