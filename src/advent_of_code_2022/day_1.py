@@ -1,4 +1,5 @@
 from advent_of_code_2022.elf import Elf
+from collections import Counter
 
 
 def get_file(path):
@@ -63,11 +64,15 @@ def get_highest_caloried_elf_info(elves):
     return message
 
 
-def get_top_3_highest_caloried_elf_info(elves):
-    highest_caloried_elfs = find_top_3_elves_with_most_calories(elves)
-    total_calories = 0
+def get_top_3_highest_calories(elves):
+    elf_dict = elf_dictionary_maker(elves)
 
-    for elf in highest_caloried_elfs:
-        total_calories += elf._calculate_total_calories()
+    k = Counter(elf_dict)
 
-    return total_calories
+    top_3_values = k.most_common(3)
+
+    total_calorie_count = 0
+    for value in top_3_values:
+        total_calorie_count += value[1]
+
+    return total_calorie_count

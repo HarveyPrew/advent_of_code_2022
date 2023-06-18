@@ -3,7 +3,7 @@ from advent_of_code_2022.day_1 import (create_elves, Elf,
                                        get_highest_caloried_elf_info,
                                        get_file,
                                        get_calorie_list,
-                                       get_top_3_highest_caloried_elf_info,
+                                       get_top_3_highest_calories,
                                        elf_dictionary_maker)
 
 
@@ -56,3 +56,9 @@ def test_dictionary_gets_made():
     elves = create_elves('input_day_1.txt')
     elf_dict = elf_dictionary_maker(elves)
     assert elf_dict is not None
+
+
+def test_value_of_top_3_total_calories():
+    elves = create_elves('input_day_1.txt')
+    second_answer = get_top_3_highest_calories(elves)
+    assert second_answer is not None
