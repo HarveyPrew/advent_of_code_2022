@@ -4,35 +4,27 @@ class Elf:
         self.calories = calories
 
     def _calculate_total_calories(self):
-        total_calories = 0
-
-        for calorie in self.calories:
-            total_calories += calorie
-
-        return total_calories
+        # Calculate the total amount of calories.
+        return sum(self.calories)
 
 
 def elfList():
-    elf_1 = Elf(1, [1000, 2000, 3000])
-    elf_2 = Elf(2, [4000])
-    elf_3 = Elf(3, [5000, 6000])
-    elf_4 = Elf(4, [7000, 8000, 9000])
-    elf_5 = Elf(5, [10000])
-
-    list_of_elves = [elf_1, elf_2, elf_3, elf_4, elf_5]
-
-    return list_of_elves
+    elves = [
+        Elf(1, [1000, 2000, 3000]),
+        Elf(2, [4000]),
+        Elf(3, [5000, 6000]),
+        Elf(4, [7000, 8000, 9000]),
+        Elf(5, [10000])
+    ]
+    return elves
 
 
 def elfWithMostCalories():
     list_of_elves = elfList()
-    highest_caloried_elf = 0
-    highest_calories = 0
 
-    for elf in list_of_elves:
-        if elf._calculate_total_calories() > highest_calories:
-            highest_calories = elf._calculate_total_calories()
-            highest_caloried_elf = elf
+    # The elf with the highest calculate total calories is selected.
+    highest_caloried_elf = max(list_of_elves,
+                               key=lambda elf: elf._calculate_total_calories())
 
     return highest_caloried_elf
 
@@ -41,5 +33,5 @@ def highestCaloriedElfInfo():
     highest_caloried_elf = elfWithMostCalories()
     elf_id = highest_caloried_elf.ID
     calories = highest_caloried_elf._calculate_total_calories()
-    message = (f"Elf {elf_id} has {calories} calories")
+    message = f"Elf {elf_id} has {calories} calories"
     return message
