@@ -22,6 +22,12 @@ def test_right_elf_is_selected():
     assert elf_with_most_calories.ID == 61
 
 
+def test_right_elf_is_selected_reduced():
+    elves = create_elves('input_day_1_test.txt')
+    elf_with_most_calories = find_elf_with_most_calories(elves)
+    assert elf_with_most_calories.ID == 1
+
+
 def test_highest_caloried_elf_info_is_correct():
     elves = create_elves('input_day_1.txt')
     highest_caloried_elf_info = get_highest_caloried_elf_info(elves)

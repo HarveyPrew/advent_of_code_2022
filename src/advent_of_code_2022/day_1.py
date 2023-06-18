@@ -21,7 +21,7 @@ def get_calorie_list(path):
         single_calorie.append(int(line))
 
     finished_calorie_list = list(single_calorie)
-    calories.append(finished_calorie_list) 
+    calories.append(finished_calorie_list)
     return calories
 
 
