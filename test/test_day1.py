@@ -35,5 +35,5 @@ def test_file_opens():
 
 def test_calorie_list_filled():
     calorie_list = get_calorie_list('input_day_1.txt')
-    assert calorie_list is not None
-    
+    assert len(calorie_list) == 235
+
