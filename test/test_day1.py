@@ -1,6 +1,7 @@
 from advent_of_code_2022.day_1 import (create_elves, Elf,
                                        find_elf_with_most_calories,
-                                       get_highest_caloried_elf_info)
+                                       get_highest_caloried_elf_info,
+                                       get_file)
 
 
 def test_list_of_elves_is_correct():
@@ -23,3 +24,8 @@ def test_right_elf_is_selected():
 def test_highest_caloried_elf_info_is_correct():
     highest_caloried_elf_info = get_highest_caloried_elf_info()
     assert highest_caloried_elf_info == "Elf 4 has 24000 calories"
+
+
+def test_file_opens():
+    opened_file = get_file('input_day_1.txt')
+    assert opened_file is not None

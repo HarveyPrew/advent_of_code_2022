@@ -117,3 +117,4 @@ dmypy.json
 # VSCode
 .vscode
 .idea/
+input_day_1.txt

@@ -1,6 +1,10 @@
 from advent_of_code_2022.elf import Elf
 
 
+def get_file(path):
+    return open(path)
+
+
 def create_elves():
     elves = [
         Elf(1, [1000, 2000, 3000]),
