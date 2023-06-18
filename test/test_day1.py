@@ -2,7 +2,9 @@ from advent_of_code_2022.day_1 import (create_elves, Elf,
                                        find_elf_with_most_calories,
                                        get_highest_caloried_elf_info,
                                        get_file,
-                                       get_calorie_list)
+                                       get_calorie_list,
+                                       get_top_3_highest_caloried_elf_info,
+                                       elf_dictionary_maker)
 
 
 def test_list_of_elves_is_correct():
@@ -43,3 +45,8 @@ def test_calorie_list_filled():
     calorie_list = get_calorie_list('input_day_1.txt')
     assert len(calorie_list) == 235
 
+
+def test_dictionary_gets_made_reduced():
+    elves = create_elves('input_day_1_test.txt')
+    elf_dict = elf_dictionary_maker(elves)
+    assert elf_dict is not None

@@ -42,9 +42,32 @@ def find_elf_with_most_calories(elves):
     return max(elves, key=lambda elf: elf._calculate_total_calories())
 
 
+def elf_dictionary_maker(elves):
+    elf_dict = dict()
+    for elf in elves:
+        elf_dict[elf.ID] = elf.calories
+
+    return elf_dict
+
+
+def find_top_3_elves_with_most_calories(elves):
+    top_3_elves = max(elves, key=lambda elf: elf._calculate_total_calories())[:3]
+    return top_3_elves
+
+
 def get_highest_caloried_elf_info(elves):
     highest_caloried_elf = find_elf_with_most_calories(elves)
     elf_id = highest_caloried_elf.ID
     calories = highest_caloried_elf._calculate_total_calories()
     message = f"Elf {elf_id} has {calories} calories"
     return message
+
+
+def get_top_3_highest_caloried_elf_info(elves):
+    highest_caloried_elfs = find_top_3_elves_with_most_calories(elves)
+    total_calories = 0
+
+    for elf in highest_caloried_elfs:
+        total_calories += elf._calculate_total_calories()
+
+    return total_calories
