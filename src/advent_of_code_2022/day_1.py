@@ -9,19 +9,19 @@ def get_file(path):
 def get_calorie_list(path):
     calories = []
     single_calorie = []
-    file = get_file(path)
 
-    for line in file:
+    with get_file(path) as file:
+        for line in file:
+            calorie = line.strip()
 
-        if line == "\n":
-            finished_calorie_list = list(single_calorie)
-            calories.append(finished_calorie_list)
-            single_calorie.clear()
-            continue
+            if not calorie:
+                finished_calorie_list = list(single_calorie)
+                calories.append(finished_calorie_list)
+                single_calorie.clear()
 
-        single_calorie.append(int(line))
+            else:
+                single_calorie.append(int(line))
 
-    finished_calorie_list = list(single_calorie)
     calories.append(finished_calorie_list)
     return calories
 
