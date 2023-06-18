@@ -1,4 +1,4 @@
-from advent_of_code_2022.day_1 import elfList, Elf
+from advent_of_code_2022.day_1 import elfList, Elf, elfWithMostCalories
 
 
 def test_list_of_elves_is_correct():
@@ -12,6 +12,6 @@ def test_if_calories_is_calculated():
     assert total_calories == 50
 
 
-# def test_right_elf_is_selected():
-#     elf_with_most_calories = elfWithMostCalories()
-#     assert elf_with_most_calories == 4
+def test_right_elf_is_selected():
+    elf_with_most_calories = elfWithMostCalories()
+    assert elf_with_most_calories == 4
