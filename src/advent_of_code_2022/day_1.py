@@ -7,14 +7,18 @@ def get_file(path):
 
 def get_calorie_list(path):
     calories = []
+    single_calorie = []
     file = get_file(path)
 
     for line in file:
 
         if line == "\n":
-            break
+            finished_calorie_list = list(single_calorie)
+            calories.append(finished_calorie_list)
+            single_calorie.clear()
+            continue
 
-        calories.append(int(line))
+        single_calorie.append(int(line))
 
     return calories
 
