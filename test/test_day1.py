@@ -1,8 +1,10 @@
-from advent_of_code_2022.day_1 import elfList, Elf, elfWithMostCalories, highestCaloriedElfInfo
+from advent_of_code_2022.day_1 import (create_elves, Elf,
+                                       find_elf_with_most_calories,
+                                       get_highest_caloried_elf_info)
 
 
 def test_list_of_elves_is_correct():
-    elf_list = elfList()
+    elf_list = create_elves()
     assert len(elf_list) == 5
 
 
@@ -13,10 +15,11 @@ def test_if_calories_is_calculated():
 
 
 def test_right_elf_is_selected():
-    elf_with_most_calories = elfWithMostCalories()
+    elves = create_elves()
+    elf_with_most_calories = find_elf_with_most_calories(elves)
     assert elf_with_most_calories.ID == 4
 
 
 def test_highest_caloried_elf_info_is_correct():
-    highest_caloried_elf_info = highestCaloriedElfInfo()
+    highest_caloried_elf_info = get_highest_caloried_elf_info()
     assert highest_caloried_elf_info == "Elf 4 has 24000 calories"
