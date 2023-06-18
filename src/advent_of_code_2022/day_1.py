@@ -45,7 +45,7 @@ def find_elf_with_most_calories(elves):
 def elf_dictionary_maker(elves):
     elf_dict = dict()
     for elf in elves:
-        elf_dict[elf.ID] = elf.calories
+        elf_dict[elf.ID] = sum(elf.calories)
 
     return elf_dict
 

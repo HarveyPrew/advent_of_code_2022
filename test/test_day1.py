@@ -50,3 +50,9 @@ def test_dictionary_gets_made_reduced():
     elves = create_elves('input_day_1_test.txt')
     elf_dict = elf_dictionary_maker(elves)
     assert elf_dict is not None
+
+
+def test_dictionary_gets_made():
+    elves = create_elves('input_day_1.txt')
+    elf_dict = elf_dictionary_maker(elves)
+    assert elf_dict is not None
