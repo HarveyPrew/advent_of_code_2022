@@ -1,7 +1,15 @@
 class Elf:
     def __init__(self, ID, calories):
         self.ID = ID
-        self. calories = calories
+        self.calories = calories
+
+    def _calculate_total_calories(self):
+        total_calories = 0
+
+        for calorie in self.calories:
+            total_calories += calorie
+
+        return total_calories
 
 
 def elfList():
@@ -14,3 +22,7 @@ def elfList():
     list_of_elves = [elf_1, elf_2, elf_3, elf_4, elf_5]
 
     return list_of_elves
+
+
+# def elfWithMostCalories():
+#     list_of_elves = elfList()
