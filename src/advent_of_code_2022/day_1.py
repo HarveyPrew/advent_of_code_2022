@@ -20,21 +20,19 @@ def get_calorie_list(path):
                 single_calorie.clear()
 
             else:
-                single_calorie.append(int(line))
+                single_calorie.append(int(calorie))
 
     calories.append(finished_calorie_list)
     return calories
 
 
 def create_elves(path):
-    calories = get_calorie_list(path)
+    calorie_list = get_calorie_list(path)
     elves = []
-    elf_number = 1
 
-    for element in calories:
-        elf = Elf(elf_number, element)
+    for id, calorie in enumerate(calorie_list, start=1):
+        elf = Elf(id, calorie)
         elves.append(elf)
-        elf_number += 1
 
     return elves
 
