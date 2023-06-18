@@ -60,7 +60,7 @@ def get_highest_caloried_elf_info(elves):
 
 
 def get_top_3_highest_calories(elves):
-    elf_dict = elf_dictionary_maker(elves)
+    elf_dict = create_elf_dictionary(elves)
 
     k = Counter(elf_dict)
 

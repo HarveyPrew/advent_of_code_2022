@@ -4,7 +4,7 @@ from advent_of_code_2022.day_1 import (create_elves, Elf,
                                        get_file,
                                        get_calorie_list,
                                        get_top_3_highest_calories,
-                                       elf_dictionary_maker)
+                                       create_elf_dictionary)
 
 
 def test_list_of_elves_is_correct():
@@ -48,13 +48,13 @@ def test_calorie_list_filled():
 
 def test_dictionary_gets_made_reduced():
     elves = create_elves('input_day_1_test.txt')
-    elf_dict = elf_dictionary_maker(elves)
+    elf_dict = create_elf_dictionary(elves)
     assert elf_dict is not None
 
 
 def test_dictionary_gets_made():
     elves = create_elves('input_day_1.txt')
-    elf_dict = elf_dictionary_maker(elves)
+    elf_dict = create_elf_dictionary(elves)
     assert elf_dict is not None
 
 
