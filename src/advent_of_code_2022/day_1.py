@@ -47,7 +47,8 @@ def create_elf_dictionary(elves):
 
 
 def find_top_3_elves_with_most_calories(elves):
-    top_3_elves = max(elves, key=lambda elf: elf._calculate_total_calories())[:3]
+    top_3_elves = max(elves,
+                      key=lambda elf: elf._calculate_total_calories())[:3]
     return top_3_elves
 
 
@@ -61,10 +62,7 @@ def get_highest_caloried_elf_info(elves):
 
 def get_top_3_highest_calories(elves):
     elf_dict = create_elf_dictionary(elves)
-
-    k = Counter(elf_dict)
-
-    top_3_values = k.most_common(3)
+    top_3_values = Counter(elf_dict).most_common(3)
 
     total_calorie_count = 0
     for value in top_3_values:
