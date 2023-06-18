@@ -2,8 +2,21 @@ from advent_of_code_2022.elf import Elf
 
 
 def get_file(path):
-    with open(path, "r") as reader:
-        return reader.read()
+    return open(path, "r")
+
+
+def get_calorie_list(path):
+    calories = []
+    file = get_file(path)
+
+    for line in file:
+
+        if line == "\n":
+            break
+
+        calories.append(int(line))
+
+    return calories
 
 
 def create_elves():
