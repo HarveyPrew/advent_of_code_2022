@@ -32,6 +32,14 @@ def elfWithMostCalories():
     for elf in list_of_elves:
         if elf._calculate_total_calories() > highest_calories:
             highest_calories = elf._calculate_total_calories()
-            highest_caloried_elf = elf.ID
+            highest_caloried_elf = elf
 
     return highest_caloried_elf
+
+
+def highestCaloriedElfInfo():
+    highest_caloried_elf = elfWithMostCalories()
+    elf_id = highest_caloried_elf.ID
+    calories = highest_caloried_elf._calculate_total_calories()
+    message = (f"Elf {elf_id} has {calories} calories")
+    return message
