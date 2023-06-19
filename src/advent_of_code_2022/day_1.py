@@ -65,6 +65,7 @@ def get_top_3_highest_calories(elves):
     top_3_values = Counter(elf_dict).most_common(3)
 
     total_calorie_count = 0
+
     for value in top_3_values:
         total_calorie_count += value[1]
 
