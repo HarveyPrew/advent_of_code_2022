@@ -1,3 +1,6 @@
+from advent_of_code_2022.move import Move
+
+
 def get_file(path):
     return open(path, "r")
 
@@ -7,15 +10,12 @@ def point_receiver(path):
 
     with get_file(path) as file:
         for line in file:
-            move = line.strip()
+            raw_move = line.strip()
 
-            if "X" in move:
-                score += 1
+            move = Move(raw_move[0], raw_move[2])
+            move.calculate_move_points()
+            move.calculate_total_points()
 
-            if "Y" in move:
-                score += 2
-
-            if "Z" in move:
-                score += 3
+            score += move.total_points
 
     return score
