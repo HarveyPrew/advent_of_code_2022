@@ -12,6 +12,16 @@ def test_move_score_is_correct():
     assert score == 6
 
 
-def test_win_found():
+def test_win_found_rock():
     move = Move('C', 'X')
+    assert move.calculate_result_points() == 6
+
+
+def test_win_found_paper():
+    move = Move('A', 'Y')
+    assert move.calculate_result_points() == 6
+
+
+def test_win_found_scissors():
+    move = Move('B', 'Z')
     assert move.calculate_result_points() == 6
