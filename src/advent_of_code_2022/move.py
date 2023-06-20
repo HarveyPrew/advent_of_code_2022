@@ -18,6 +18,12 @@ class Move:
 
         return self.move_points
 
+    def calculate_result_points(self):
+        if "C" in self.oppenent_move and "X" in self.my_move:
+            self.outcome_points = 6
+
+        return self.outcome_points
+
     def calculate_total_points(self):
         self.total_points = self.move_points + self.outcome_points
         return (self.total_points)
