@@ -17,26 +17,25 @@ class Move:
             self.move_points = 3
 
         return self.move_points
-    
+
     def return_win_points(self, oppenent, me):
         if oppenent in self.oppenent_move and me in self.my_move:
             self.outcome_points = 6
         return self.outcome_points
+    
+    def return_draw_points(self, oppenent, me):
+        if oppenent in self.oppenent_move and me in self.my_move:
+            self.outcome_points = 3
+        return self.outcome_points
 
     def calculate_result_points(self):
-        if self.oppenent_move == "C" and self.my_move == "X":
-            self.outcome_points = 6
-        if self.oppenent_move == "A" and self.my_move == "Y":
-            self.outcome_points = 6
-        if self.oppenent_move == "B" and self.my_move == "Z":
-            self.outcome_points = 6
+        self.outcome_points = self.return_win_points("C", "X")
+        self.outcome_points = self.return_win_points("A", "Y")
+        self.outcome_points = self.return_win_points("B", "Z")
 
-        if self.oppenent_move == "B" and self.my_move == "Y":
-            self.outcome_points = 3
-        if self.oppenent_move == "A" and self.my_move == "X":
-            self.outcome_points = 3
-        if self.oppenent_move == "C" and self.my_move == "Z":
-            self.outcome_points = 3
+        self.outcome_points = self.return_draw_points("B", "Y")
+        self.outcome_points = self.return_draw_points("A", "X")
+        self.outcome_points = self.return_draw_points("C", "Z")
 
         return self.outcome_points
 
