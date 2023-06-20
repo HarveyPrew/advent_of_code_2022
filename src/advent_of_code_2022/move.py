@@ -7,30 +7,35 @@ class Move:
         self.total_points = None
 
     def calculate_move_points(self):
-        if "X" in self.my_move:
+        if self.my_move == "X":
             self.move_points = 1
 
-        if "Y" in self.my_move:
+        if self.my_move == "Y":
             self.move_points = 2
 
-        if "Z" in self.my_move:
+        if self.my_move == "Z":
             self.move_points = 3
 
         return self.move_points
+    
+    def return_win_points(self, oppenent, me):
+        if oppenent in self.oppenent_move and me in self.my_move:
+            self.outcome_points = 6
+        return self.outcome_points
 
     def calculate_result_points(self):
-        if "C" in self.oppenent_move and "X" in self.my_move:
+        if self.oppenent_move == "C" and self.my_move == "X":
             self.outcome_points = 6
-        if "A" in self.oppenent_move and "Y" in self.my_move:
+        if self.oppenent_move == "A" and self.my_move == "Y":
             self.outcome_points = 6
-        if "B" in self.oppenent_move and "Z" in self.my_move:
+        if self.oppenent_move == "B" and self.my_move == "Z":
             self.outcome_points = 6
-        
-        if "B" in self.oppenent_move and "Y" in self.my_move:
+
+        if self.oppenent_move == "B" and self.my_move == "Y":
             self.outcome_points = 3
-        if "A" in self.oppenent_move and "X" in self.my_move:
+        if self.oppenent_move == "A" and self.my_move == "X":
             self.outcome_points = 3
-        if "C" in self.oppenent_move and "Z" in self.my_move:
+        if self.oppenent_move == "C" and self.my_move == "Z":
             self.outcome_points = 3
 
         return self.outcome_points
