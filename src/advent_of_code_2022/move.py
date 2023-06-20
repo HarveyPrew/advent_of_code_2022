@@ -18,14 +18,21 @@ class Move:
 
         return self.move_points
 
-    def return_win_points(self, oppenent, me):
+    def return_outcome_points(self, oppenent, me, score_amount):
         if oppenent in self.oppenent_move and me in self.my_move:
-            self.outcome_points = 6
+            self.outcome_points = score_amount
+        return self.outcome_points
+
+    def return_win_points(self, oppenent, me):
+        self.outcome_points = self.return_outcome_points(oppenent, me, 6)
+        return self.outcome_points
+
+    def return_draw_points(self, oppenent, me):
+        self.outcome_points = self.return_outcome_points(oppenent, me, 3)
         return self.outcome_points
     
-    def return_draw_points(self, oppenent, me):
-        if oppenent in self.oppenent_move and me in self.my_move:
-            self.outcome_points = 3
+    def return_lost_points(self, oppenent, me):
+        self.outcome_points = self.return_outcome_points(oppenent, me, 0)
         return self.outcome_points
 
     def calculate_result_points(self):
@@ -36,6 +43,10 @@ class Move:
         self.outcome_points = self.return_draw_points("B", "Y")
         self.outcome_points = self.return_draw_points("A", "X")
         self.outcome_points = self.return_draw_points("C", "Z")
+
+        self.outcome_points = self.return_lost_points("B", "X")
+        self.outcome_points = self.return_lost_points("C", "Y")
+        self.outcome_points = self.return_lost_points("A", "Z")
 
         return self.outcome_points
 

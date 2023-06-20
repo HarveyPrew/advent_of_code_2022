@@ -40,3 +40,18 @@ def test_draw_found_paper():
 def test_draw_found_scissors():
     move = Move('C', 'Z')
     assert move.calculate_result_points() == 3
+
+
+def test_lost_found_rock():
+    move = Move('B', 'X')
+    assert move.calculate_result_points() == 0
+
+
+def test_lost_found_paper():
+    move = Move('C', 'Y')
+    assert move.calculate_result_points() == 0
+
+
+def test_lost_found_scissors():
+    move = Move('A', 'Z')
+    assert move.calculate_result_points() == 0
