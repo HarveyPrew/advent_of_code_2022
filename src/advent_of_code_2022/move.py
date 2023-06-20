@@ -25,6 +25,13 @@ class Move:
             self.outcome_points = 6
         if "B" in self.oppenent_move and "Z" in self.my_move:
             self.outcome_points = 6
+        
+        if "B" in self.oppenent_move and "Y" in self.my_move:
+            self.outcome_points = 3
+        if "A" in self.oppenent_move and "X" in self.my_move:
+            self.outcome_points = 3
+        if "C" in self.oppenent_move and "Z" in self.my_move:
+            self.outcome_points = 3
 
         return self.outcome_points
 

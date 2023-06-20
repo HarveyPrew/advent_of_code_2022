@@ -25,3 +25,18 @@ def test_win_found_paper():
 def test_win_found_scissors():
     move = Move('B', 'Z')
     assert move.calculate_result_points() == 6
+
+
+def test_draw_found_rock():
+    move = Move('A', 'X')
+    assert move.calculate_result_points() == 3
+
+
+def test_draw_found_paper():
+    move = Move('B', 'Y')
+    assert move.calculate_result_points() == 3
+
+
+def test_draw_found_scissors():
+    move = Move('C', 'Z')
+    assert move.calculate_result_points() == 3
