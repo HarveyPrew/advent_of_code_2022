@@ -8,8 +8,8 @@ def test_file_opens():
 
 
 def test_move_score_is_correct():
-    score = point_receiver('input_day_2_test.txt')
-    assert score == 15
+    score = point_receiver('input_day_2.txt')
+    assert score == 10404
 
 
 def test_win_found_rock():
