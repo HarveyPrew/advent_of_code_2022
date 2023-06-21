@@ -2,54 +2,34 @@ class Move:
     def __init__(self, oppenent_move, my_move):
         self.oppenent_move = oppenent_move
         self.my_move = my_move
-        self.move_points = None
-        self.outcome_points = 0
-        self.total_points = None
+        self.move_points = self.calculate_move_points()
+        self.outcome_points = self.calculate_outcome_points()
+        self.total_points = self.calculate_total_points()
+
+    def calculate_outcome_points(self):
+        if self.my_move == "rock" and self.oppenent_move == "scissors":
+            return 6
+        elif self.my_move == "paper" and self.oppenent_move == "rock":
+            return 6
+        elif self.my_move == "scissors" and self.oppenent_move == "paper":
+            return 6
+        elif self.my_move == self.oppenent_move:
+            return 3
+        else:
+            return 0
 
     def calculate_move_points(self):
-        if self.my_move == "X":
-            self.move_points = 1
+        if self.my_move == "rock":
+            return 1
 
-        if self.my_move == "Y":
-            self.move_points = 2
+        if self.my_move == "paper":
+            return 2
 
-        if self.my_move == "Z":
-            self.move_points = 3
+        if self.my_move == "scissors":
+            return 3
 
-        return self.move_points
-
-    def return_outcome_points(self, oppenent, me, score_amount):
-        if oppenent in self.oppenent_move and me in self.my_move:
-            self.outcome_points = score_amount
-        return self.outcome_points
-
-    def return_win_points(self, oppenent, me):
-        self.outcome_points = self.return_outcome_points(oppenent, me, 6)
-        return self.outcome_points
-
-    def return_draw_points(self, oppenent, me):
-        self.outcome_points = self.return_outcome_points(oppenent, me, 3)
-        return self.outcome_points
-    
-    def return_lost_points(self, oppenent, me):
-        self.outcome_points = self.return_outcome_points(oppenent, me, 0)
-        return self.outcome_points
-
-    def calculate_result_points(self):
-        self.outcome_points = self.return_win_points("C", "X")
-        self.outcome_points = self.return_win_points("A", "Y")
-        self.outcome_points = self.return_win_points("B", "Z")
-
-        self.outcome_points = self.return_draw_points("B", "Y")
-        self.outcome_points = self.return_draw_points("A", "X")
-        self.outcome_points = self.return_draw_points("C", "Z")
-
-        self.outcome_points = self.return_lost_points("B", "X")
-        self.outcome_points = self.return_lost_points("C", "Y")
-        self.outcome_points = self.return_lost_points("A", "Z")
-
-        return self.outcome_points
+        else:
+            return 0
 
     def calculate_total_points(self):
-        self.total_points = self.move_points + self.outcome_points
-        return (self.total_points)
+        return self.move_points + self.outcome_points

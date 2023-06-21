@@ -1,57 +1,57 @@
-from advent_of_code_2022.day_2 import get_file, point_receiver
+from advent_of_code_2022.day_2 import point_receiver
 from advent_of_code_2022.move import Move
 
 
-def test_file_opens():
-    opened_file = get_file('input_day_2_test.txt')
-    assert opened_file is not None
+def test_total_score_is_correct_test():
+    score = point_receiver('input_day_2_test.txt')
+    assert score == 15
 
 
-def test_move_score_is_correct():
+def test_total_score_is_correct():
     score = point_receiver('input_day_2.txt')
     assert score == 10404
 
 
 def test_win_found_rock():
-    move = Move('C', 'X')
-    assert move.calculate_result_points() == 6
+    move = Move('scissors', 'rock')
+    assert move.total_points == 7
 
 
 def test_win_found_paper():
-    move = Move('A', 'Y')
-    assert move.calculate_result_points() == 6
+    move = Move('rock', 'paper')
+    assert move.total_points == 8
 
 
 def test_win_found_scissors():
-    move = Move('B', 'Z')
-    assert move.calculate_result_points() == 6
+    move = Move('paper', 'scissors')
+    assert move.total_points == 9
 
 
 def test_draw_found_rock():
-    move = Move('A', 'X')
-    assert move.calculate_result_points() == 3
+    move = Move('rock', 'rock')
+    assert move.total_points == 4
 
 
 def test_draw_found_paper():
-    move = Move('B', 'Y')
-    assert move.calculate_result_points() == 3
+    move = Move('paper', 'paper')
+    assert move.total_points == 5
 
 
 def test_draw_found_scissors():
-    move = Move('C', 'Z')
-    assert move.calculate_result_points() == 3
+    move = Move('scissors', 'scissors')
+    assert move.total_points == 6
 
 
 def test_lost_found_rock():
-    move = Move('B', 'X')
-    assert move.calculate_result_points() == 0
+    move = Move('paper', 'rock')
+    assert move.total_points == 1
 
 
 def test_lost_found_paper():
-    move = Move('C', 'Y')
-    assert move.calculate_result_points() == 0
+    move = Move('scissors', 'paper')
+    assert move.total_points == 2
 
 
 def test_lost_found_scissors():
-    move = Move('A', 'Z')
-    assert move.calculate_result_points() == 0
+    move = Move('rock', 'scissors')
+    assert move.total_points == 3
