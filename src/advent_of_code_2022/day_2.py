@@ -43,7 +43,32 @@ def point_receiver_part_2(path):
             opponent_move = move_converter(raw_move[0], "A", "B", "C")
             outcome = outcome_converter(raw_move[2], "X", "Y", "Z")
 
-            move = Move(opponent_move, outcome)
-            score += move.total_points
+            if outcome == "lose":
+                score += 0
+            if outcome == "draw":
+                score += 3
+            if outcome == "win":
+                score += 6
 
+            if outcome == "win" and opponent_move == "rock":
+                score += 2
+            if outcome == "win" and opponent_move == "paper":
+                score += 3
+            if outcome == "win" and opponent_move == "scissors":
+                score += 1
+
+            if outcome == "draw" and opponent_move == "rock":
+                score += 1
+            if outcome == "draw" and opponent_move == "paper":
+                score += 2
+            if outcome == "draw" and opponent_move == "scissors":
+                score += 3
+
+            if outcome == "lose" and opponent_move == "rock":
+                score += 3
+            if outcome == "lose" and opponent_move == "paper":
+                score += 1
+            if outcome == "lose" and opponent_move == "scissors":
+                score += 2
+    
     return score
