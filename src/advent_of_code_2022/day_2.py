@@ -14,8 +14,8 @@ def point_receiver(path):
 
             move = Move(raw_move[0], raw_move[2])
             move.calculate_move_points()
+            move.calculate_result_points()
             move.calculate_total_points()
-
             score += move.total_points
 
     return score
