@@ -1,10 +1,16 @@
-from advent_of_code_2022.day_2 import point_receiver
+from advent_of_code_2022.day_2 import point_receiver, outcome_converter
 from advent_of_code_2022.move import Move
 
 
 def test_total_score_is_correct_test():
     score = point_receiver('input_day_2_test.txt')
     assert score == 15
+
+
+def test_outcome_converter():
+    raw_move = "A X"
+    outcome = outcome_converter(raw_move[2], "X", "Y", "Z")
+    assert outcome == "lose"
 
 
 def test_total_score_is_correct():

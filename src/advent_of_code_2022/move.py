@@ -4,7 +4,7 @@ class Move:
         self.my_move = my_move
         self.move_points = self.calculate_move_points()
         self.outcome_points = self.calculate_outcome_points()
-        self.total_points = self.calculate_total_points()
+        self.total_points = None
 
     def calculate_outcome_points(self):
         if self.my_move == "rock" and self.oppenent_move == "scissors":
