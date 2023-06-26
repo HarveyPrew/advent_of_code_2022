@@ -2,21 +2,21 @@ from advent_of_code_2022.move import Move
 
 
 def move_converter(move, rock, paper, scissors):
-    if move == rock:
-        return "rock"
-    if move == paper:
-        return "paper"
-    if move == scissors:
-        return "scissors"
+    moves = {
+        rock: "rock",
+        paper: "paper",
+        scissors: "scissors"
+    }
+    return moves.get(move)
 
 
 def outcome_converter(move, lose, draw, win):
-    if move == lose:
-        return "lose"
-    if move == draw:
-        return "draw"
-    if move == win:
-        return "win"
+    outcomes = {
+        lose: "lose",
+        draw: "draw",
+        win: "win"
+    }
+    return outcomes.get(move)
 
 
 def point_receiver(path):
