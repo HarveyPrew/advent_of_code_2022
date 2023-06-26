@@ -43,53 +43,17 @@ class Move:
         self.total_points = None
 
     def calculate_outcome_points(self):
-        if self.my_move == self.opponent_move:
-            return Move.OUTCOME_POINTS_MAP.get((self.my_move,
-                                                self.opponent_move), 0)
-        return 0
+        return Move.OUTCOME_POINTS_MAP.get((self.my_move, self.opponent_move),
+                                           0)
 
     def calculate_outcome_converter(self):
-        if self.outcome == "lose":
-            return 0
-        if self.outcome == "draw":
-            return 3
-        if self.outcome == "win":
-            return 6
+        return Move.OUTCOME_CONVERTER_MAP.get(self.outcome, 0)
 
     def calculate_move_points(self):
-        if self.my_move == "rock":
-            return 1
-
-        if self.my_move == "paper":
-            return 2
-
-        if self.my_move == "scissors":
-            return 3
-
-        else:
-            return 0
+        return Move.MOVE_POINTS_MAP.get(self.my_move, 0)
 
     def calculate_total_points(self):
         return self.move_points + self.outcome_points
 
     def calculate_my_move(self):
-        if self.outcome == "win" and self.opponent_move == "rock":
-            return 2
-        if self.outcome == "win" and self.opponent_move == "paper":
-            return 3
-        if self.outcome == "win" and self.opponent_move == "scissors":
-            return 1
-
-        if self.outcome == "draw" and self.opponent_move == "rock":
-            return 1
-        if self.outcome == "draw" and self.opponent_move == "paper":
-            return 2
-        if self.outcome == "draw" and self.opponent_move == "scissors":
-            return 3
-
-        if self.outcome == "lose" and self.opponent_move == "rock":
-            return 3
-        if self.outcome == "lose" and self.opponent_move == "paper":
-            return 1
-        if self.outcome == "lose" and self.opponent_move == "scissors":
-            return 2
+        return Move.MY_MOVE_MAP.get((self.outcome, self.opponent_move), 0)
