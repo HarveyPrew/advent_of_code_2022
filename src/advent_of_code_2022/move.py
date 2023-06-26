@@ -5,10 +5,9 @@ class Move:
         self.outcome = outcome
         self.move_points = self.calculate_move_points()
         self.outcome_points = self.calculate_outcome_points()
-        self.outcome_points_part_2 = self.calculate_outcome_points_part_2()
+        self.outcome_converter = self.calculate_outcome_converter()
         self.my_move_when_outcome_given = self.calculate_my_move()
         self.total_points = None
-        self.total_points_part_2 = None
 
     def calculate_outcome_points(self):
         if self.my_move == "rock" and self.opponent_move == "scissors":
@@ -24,7 +23,7 @@ class Move:
         else:
             return 0
 
-    def calculate_outcome_points_part_2(self):
+    def calculate_outcome_converter(self):
         if self.outcome == "lose":
             return 0
         if self.outcome == "draw":
@@ -46,9 +45,6 @@ class Move:
             return 0
 
     def calculate_total_points(self):
-        return self.move_points + self.outcome_points
-    
-    def calculate_total_points_part_2(self):
         return self.move_points + self.outcome_points
 
     def calculate_my_move(self):

@@ -34,7 +34,7 @@ def point_receiver(path):
     return score
 
 
-def point_receiver_part_2(path):
+def point_receiver_when_outcome_given(path):
     score = 0
 
     with open(path, "r") as file:
@@ -44,7 +44,7 @@ def point_receiver_part_2(path):
             outcome = outcome_converter(raw_move[2], "X", "Y", "Z")
 
             move = Move(opponent_move, 0, outcome)
-            score += (move.outcome_points_part_2 +
+            score += (move.outcome_converter +
                       move.my_move_when_outcome_given)
 
     return score
