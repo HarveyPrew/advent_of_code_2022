@@ -42,3 +42,18 @@ def find_sum_of_priority_numbers(bags):
     total_score = sum(find_priority_number_for_bag(bag)
                       for bag in bags)
     return total_score
+
+
+def three_bag_merger(bags):
+    bags_of_three = list()
+    three_bags = list()
+    for count, bag in enumerate(bags, start=1):
+        if count % 3 == 0:
+            three_bags.append(bag)
+            three_bags_filled = list(three_bags)
+            bags_of_three.append(three_bags_filled)
+            three_bags.clear()
+        else:
+            three_bags.append(bag)
+
+    return bags_of_three
