@@ -1,4 +1,6 @@
-from advent_of_code_2022.day_3 import rucksack_splitter, recurring_item_finder
+from advent_of_code_2022.day_3 import (rucksack_splitter, 
+                                       recurring_item_finder,
+                                       item_to_priority_number_converter)
 
 
 def test_rucksack_splits():
@@ -15,3 +17,17 @@ def test_item_in_both_compartments():
     recurring_item = recurring_item_finder(first_compartment,
                                            second_compartment)
     assert recurring_item == ['r']
+
+
+def test_item_converts_lower():
+    item = 'a'
+    priority_number = item_to_priority_number_converter(item)
+
+    assert priority_number == 1
+
+
+def test_item_converts_upper():
+    item = 'A'
+    priority_number = item_to_priority_number_converter(item)
+
+    assert priority_number == 27
