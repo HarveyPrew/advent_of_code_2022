@@ -1,13 +1,13 @@
-from advent_of_code_2022.day_3 import (rucksack_splitter,
+from advent_of_code_2022.day_3 import (bag_splitter,
                                        recurring_item_finder,
                                        item_to_priority_number_converter,
                                        find_sum_of_priority_numbers,
-                                       parse_ruck_sacks)
+                                       parse_bags)
 
 
-def test_rucksack_splits():
-    rucksack = "vJrw"
-    first_compartment, second_compartment = rucksack_splitter(rucksack)
+def test_bag_split():
+    bag = "vJrw"
+    first_compartment, second_compartment = bag_splitter(bag)
     assert first_compartment == ['v', 'J']
     assert second_compartment == ['r', 'w']
 
@@ -36,14 +36,14 @@ def test_item_converts_upper():
 
 
 def test_sum_of_priorities_test():
-    ruck_sacks = parse_ruck_sacks("input_day_3_test.txt")
-    sum_of_priorities = find_sum_of_priority_numbers(ruck_sacks)
+    bags = parse_bags("input_day_3_test.txt")
+    sum_of_priorities = find_sum_of_priority_numbers(bags)
 
     assert sum_of_priorities == 157
 
 
 def test_sum_of_priorities():
-    ruck_sacks = parse_ruck_sacks("input_day_3.txt")
-    sum_of_priorities = find_sum_of_priority_numbers(ruck_sacks)
+    bags = parse_bags("input_day_3.txt")
+    sum_of_priorities = find_sum_of_priority_numbers(bags)
 
     assert sum_of_priorities == 7597

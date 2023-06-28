@@ -1,17 +1,17 @@
-def parse_ruck_sacks(path):
-    ruck_sacks = list()
+def parse_bags(path):
+    bags = list()
     with open(path) as f:
         for line in f:
-            ruck_sack = line.strip()
-            ruck_sacks.append(ruck_sack)
+            bag = line.strip()
+            bags.append(bag)
 
-    return ruck_sacks
+    return bags
 
 
-def rucksack_splitter(ruck_sack):
-    half_len = len(ruck_sack) // 2
-    first_compartment = list(ruck_sack[:half_len])
-    second_compartment = list(ruck_sack[half_len:])
+def bag_splitter(bag):
+    half_len = len(bag) // 2
+    first_compartment = list(bag[:half_len])
+    second_compartment = list(bag[half_len:])
     return first_compartment, second_compartment
 
 
@@ -30,15 +30,15 @@ def item_to_priority_number_converter(item):
     return priority_number
 
 
-def find_priority_number_for_bag(ruck_sack):
-    first_compartment, second_compartment = rucksack_splitter(ruck_sack)
+def find_priority_number_for_bag(bag):
+    first_compartment, second_compartment = bag_splitter(bag)
     recurring_item = recurring_item_finder(first_compartment,
                                            second_compartment)
     priority_number = item_to_priority_number_converter(recurring_item)
     return priority_number
 
 
-def find_sum_of_priority_numbers(ruck_sacks):
-    total_score = sum(find_priority_number_for_bag(ruck_sack)
-                      for ruck_sack in ruck_sacks)
+def find_sum_of_priority_numbers(bags):
+    total_score = sum(find_priority_number_for_bag(bag)
+                      for bag in bags)
     return total_score
