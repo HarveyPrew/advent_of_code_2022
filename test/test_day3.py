@@ -1,6 +1,8 @@
-from advent_of_code_2022.day_3 import (rucksack_splitter, 
+from advent_of_code_2022.day_3 import (rucksack_splitter,
                                        recurring_item_finder,
-                                       item_to_priority_number_converter)
+                                       item_to_priority_number_converter,
+                                       find_sum_of_priority_numbers,
+                                       parse_ruck_sacks)
 
 
 def test_rucksack_splits():
@@ -34,14 +36,7 @@ def test_item_converts_upper():
 
 
 def test_sum_of_priorities():
-    sum_of_priorities = 0
-    with open('input_day_3_test.txt') as f:
-        for line in f:
-            rucksack = line.strip()
-            first_compartment, second_compartment = rucksack_splitter(rucksack)
-            recurring_item = recurring_item_finder(first_compartment,
-                                                   second_compartment)
-            priority_number = item_to_priority_number_converter(recurring_item)
-            sum_of_priorities += priority_number
+    ruck_sacks = parse_ruck_sacks("input_day_3_test.txt")
+    sum_of_priorities = find_sum_of_priority_numbers(ruck_sacks)
 
     assert sum_of_priorities == 157
