@@ -35,8 +35,15 @@ def test_item_converts_upper():
     assert priority_number == 27
 
 
-def test_sum_of_priorities():
+def test_sum_of_priorities_test():
     ruck_sacks = parse_ruck_sacks("input_day_3_test.txt")
     sum_of_priorities = find_sum_of_priority_numbers(ruck_sacks)
 
     assert sum_of_priorities == 157
+
+
+def test_sum_of_priorities():
+    ruck_sacks = parse_ruck_sacks("input_day_3.txt")
+    sum_of_priorities = find_sum_of_priority_numbers(ruck_sacks)
+
+    assert sum_of_priorities == 7597
