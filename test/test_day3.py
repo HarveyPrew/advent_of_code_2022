@@ -16,7 +16,7 @@ def test_item_in_both_compartments():
 
     recurring_item = recurring_item_finder(first_compartment,
                                            second_compartment)
-    assert recurring_item == ['r']
+    assert recurring_item == 'r'
 
 
 def test_item_converts_lower():
@@ -31,3 +31,17 @@ def test_item_converts_upper():
     priority_number = item_to_priority_number_converter(item)
 
     assert priority_number == 27
+
+
+def test_sum_of_priorities():
+    sum_of_priorities = 0
+    with open('input_day_3_test.txt') as f:
+        for line in f:
+            rucksack = line.strip()
+            first_compartment, second_compartment = rucksack_splitter(rucksack)
+            recurring_item = recurring_item_finder(first_compartment,
+                                                   second_compartment)
+            priority_number = item_to_priority_number_converter(recurring_item)
+            sum_of_priorities += priority_number
+
+    assert sum_of_priorities == 157
