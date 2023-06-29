@@ -4,7 +4,7 @@ from advent_of_code_2022.day_3 import (bag_splitter,
                                        find_sum_of_priority_numbers,
                                        parse_bags,
                                        three_bag_merger,
-                                       find_priority_number_for_bags_of_three)
+                                       total_score_among_bags_of_three)
 
 
 def test_bag_split():
@@ -53,7 +53,8 @@ def test_sum_of_priorities():
 
 
 def test_sum_of_three_bags_test():
-    total_score = find_priority_number_for_bags_of_three("input_day_3_test.txt")
+    bags = parse_bags("input_day_3_test.txt")
+    total_score = total_score_among_bags_of_three(bags)
 
     assert total_score == 70
 

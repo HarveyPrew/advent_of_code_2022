@@ -48,6 +48,14 @@ def find_priority_number_for_bag(bag):
     return priority_number
 
 
+def find_priority_number_for_three_bags(grouped_bags):
+    recurring_item = recurring_item_finder(grouped_bags[0],
+                                           grouped_bags[1],
+                                           grouped_bags[2])
+    priority_number = item_to_priority_number_converter(recurring_item)
+    return priority_number
+
+
 def find_sum_of_priority_numbers(bags):
     total_score = sum(find_priority_number_for_bag(bag)
                       for bag in bags)
@@ -69,16 +77,8 @@ def three_bag_merger(bags):
     return bags_of_three
 
 
-def find_priority_number_for_bags_of_three(path):
-    bags = parse_bags(path)
+def total_score_among_bags_of_three(bags):
     bags_of_three = three_bag_merger(bags)
-    total_score = 0
-
-    for bags in bags_of_three:
-        recurring_item = recurring_item_finder(bags[0],
-                                               bags[1],
-                                               bags[2])
-        priority_number = item_to_priority_number_converter(recurring_item)
-        total_score += priority_number
-
+    total_score = sum(find_priority_number_for_three_bags(gropued_bags)
+                      for gropued_bags in bags_of_three)
     return total_score
