@@ -3,7 +3,8 @@ from advent_of_code_2022.day_3 import (bag_splitter,
                                        item_to_priority_number_converter,
                                        find_sum_of_priority_numbers,
                                        parse_bags,
-                                       three_bag_merger)
+                                       three_bag_merger,
+                                       find_priority_number_for_bags_of_three)
 
 
 def test_bag_split():
@@ -18,7 +19,8 @@ def test_item_in_both_compartments():
     second_compartment = ['r', 'w', 'z']
 
     recurring_item = recurring_item_finder(first_compartment,
-                                           second_compartment)
+                                           second_compartment,
+                                           third_compartment=None)
     assert recurring_item == 'r'
 
 
@@ -50,6 +52,12 @@ def test_sum_of_priorities():
     assert sum_of_priorities == 7597
 
 
+def test_sum_of_three_bags_test():
+    total_score = find_priority_number_for_bags_of_three("input_day_3_test.txt")
+
+    assert total_score == 70
+
+
 def test_three_bag_merger():
     bags = ["vJrw", "zvqa", "cdvg",
             "vJrw", "zvqa", "cdvg",
@@ -60,3 +68,4 @@ def test_three_bag_merger():
     assert three_bags == [["vJrw", "zvqa", "cdvg"],
                           ["vJrw", "zvqa", "cdvg"],
                           ["vJrw", "zvqa", "cdvg"]]
+
