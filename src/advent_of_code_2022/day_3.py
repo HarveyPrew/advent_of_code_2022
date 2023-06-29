@@ -15,21 +15,21 @@ def bag_splitter(bag):
     return first_compartment, second_compartment
 
 
-def recurring_item_finder(first_compartment,
-                          second_compartment,
-                          third_compartment):
-    if third_compartment is None:
-        recurring_item = list(set(first_compartment) &
-                              set(second_compartment))
+def recurring_item_finder(compartment_1,
+                          compartment_2,
+                          compartment_3):
+    if compartment_3 is None:
+        recurring_item = list(set(compartment_1) &
+                              set(compartment_2))
     else:
-        recurring_item = list(set(first_compartment) &
-                              set(second_compartment) &
-                              set(third_compartment))
+        recurring_item = list(set(compartment_1) &
+                              set(compartment_2) &
+                              set(compartment_3))
 
     return recurring_item[0]
 
 
-def item_to_priority_number_converter(item):
+def convert_item_to_priority_number(item):
     if item.islower():
         priority_number = ord(item) - 96
 
@@ -43,16 +43,14 @@ def find_priority_number_for_bag(bag):
     first_compartment, second_compartment = bag_splitter(bag)
     recurring_item = recurring_item_finder(first_compartment,
                                            second_compartment,
-                                           third_compartment=None)
-    priority_number = item_to_priority_number_converter(recurring_item)
+                                           compartment_3=None)
+    priority_number = convert_item_to_priority_number(recurring_item)
     return priority_number
 
 
 def find_priority_number_for_three_bags(grouped_bags):
-    recurring_item = recurring_item_finder(grouped_bags[0],
-                                           grouped_bags[1],
-                                           grouped_bags[2])
-    priority_number = item_to_priority_number_converter(recurring_item)
+    recurring_item = recurring_item_finder(*grouped_bags)
+    priority_number = convert_item_to_priority_number(recurring_item)
     return priority_number
 
 
@@ -62,23 +60,14 @@ def find_sum_of_priority_numbers(bags):
     return total_score
 
 
-def three_bag_merger(bags):
-    bags_of_three = list()
-    three_bags = list()
-    for count, bag in enumerate(bags, start=1):
-        if count % 3 == 0:
-            three_bags.append(bag)
-            three_bags_filled = list(three_bags)
-            bags_of_three.append(three_bags_filled)
-            three_bags.clear()
-        else:
-            three_bags.append(bag)
-
-    return bags_of_three
+def group_bags(bags, group_size):
+    grouped_bags = [bags[i:i + group_size]
+                    for i in range(0, len(bags), group_size)]
+    return grouped_bags
 
 
-def total_score_among_bags_of_three(bags):
-    bags_of_three = three_bag_merger(bags)
-    total_score = sum(find_priority_number_for_three_bags(gropued_bags)
-                      for gropued_bags in bags_of_three)
+def sum_priority_number_for_groups(bags, group_size):
+    grouped_bags = group_bags(bags, group_size)
+    total_score = sum(find_priority_number_for_three_bags(grouped_bags)
+                      for grouped_bags in grouped_bags)
     return total_score

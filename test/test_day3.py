@@ -1,10 +1,10 @@
 from advent_of_code_2022.day_3 import (bag_splitter,
                                        recurring_item_finder,
-                                       item_to_priority_number_converter,
+                                       convert_item_to_priority_number,
                                        find_sum_of_priority_numbers,
                                        parse_bags,
-                                       three_bag_merger,
-                                       total_score_among_bags_of_three)
+                                       group_bags,
+                                       sum_priority_number_for_groups)
 
 
 def test_bag_split():
@@ -20,20 +20,20 @@ def test_item_in_both_compartments():
 
     recurring_item = recurring_item_finder(first_compartment,
                                            second_compartment,
-                                           third_compartment=None)
+                                           compartment_3=None)
     assert recurring_item == 'r'
 
 
 def test_item_converts_lower():
     item = 'a'
-    priority_number = item_to_priority_number_converter(item)
+    priority_number = convert_item_to_priority_number(item)
 
     assert priority_number == 1
 
 
 def test_item_converts_upper():
     item = 'A'
-    priority_number = item_to_priority_number_converter(item)
+    priority_number = convert_item_to_priority_number(item)
 
     assert priority_number == 27
 
@@ -54,9 +54,16 @@ def test_sum_of_priorities():
 
 def test_sum_of_three_bags_test():
     bags = parse_bags("input_day_3_test.txt")
-    total_score = total_score_among_bags_of_three(bags)
+    total_score = sum_priority_number_for_groups(bags, 3)
 
     assert total_score == 70
+
+
+def test_sum_of_three_bags():
+    bags = parse_bags("input_day_3.txt")
+    total_score = sum_priority_number_for_groups(bags, 3)
+
+    assert total_score == 2607
 
 
 def test_three_bag_merger():
@@ -64,7 +71,7 @@ def test_three_bag_merger():
             "vJrw", "zvqa", "cdvg",
             "vJrw", "zvqa", "cdvg"]
 
-    three_bags = three_bag_merger(bags)
+    three_bags = group_bags(bags, 3)
 
     assert three_bags == [["vJrw", "zvqa", "cdvg"],
                           ["vJrw", "zvqa", "cdvg"],
