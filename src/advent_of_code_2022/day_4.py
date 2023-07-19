@@ -26,3 +26,21 @@ def assignments_converter(section_assignment_pairs):
         sap[assignment] = range_extractor(sap[assignment])
 
     return sap
+
+
+def identify_duplicate_ranges(section_assignment_pairs):
+    if any(x in section_assignment_pairs[0]
+           for x in section_assignment_pairs[1]):
+        return True
+    else:
+        return False
+
+
+def shared_ranges_count(list_of_section_assignment_pairs):
+    shared_range_count = 0
+
+    for pair in list_of_section_assignment_pairs:
+        if identify_duplicate_ranges(pair) is True:
+            shared_range_count += 1
+
+    return shared_range_count
