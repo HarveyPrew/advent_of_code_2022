@@ -1,9 +1,10 @@
 
 def parse_assignment_pairs(path):
-    bags = list()
+    assignments = list()
     with open(path) as f:
         for line in f:
-            bag = line.strip()
-            bags.append(bag)
+            assignment = list(line.strip().partition(','))
+            assignment.pop(1)
+            assignments.append(assignment)
 
-    return bags
+    return assignments
