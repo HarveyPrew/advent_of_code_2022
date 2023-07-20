@@ -31,8 +31,21 @@ def identify_duplicate_ranges(sap):
             set_assignments2.issubset(set_assignments1))
 
 
+def identify_any_overlap(sap):
+    section_assignments1, section_assignments2 = sap
+    return (set(section_assignments2) & set(section_assignments1))
+
+
 def shared_ranges_count(list_of_section_assignment_pairs):
     duplicate_pair_list = [identify_duplicate_ranges(pair)
+                           for pair in list_of_section_assignment_pairs]
+
+    shared_range_count = sum(bool(x) for x in duplicate_pair_list)
+    return shared_range_count
+
+
+def shared_overlap_count(list_of_section_assignment_pairs):
+    duplicate_pair_list = [identify_any_overlap(pair)
                            for pair in list_of_section_assignment_pairs]
 
     shared_range_count = sum(bool(x) for x in duplicate_pair_list)

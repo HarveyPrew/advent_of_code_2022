@@ -1,7 +1,8 @@
 from advent_of_code_2022.day_4 import (parse_assignment_pairs,
                                        range_extractor,
                                        identify_duplicate_ranges,
-                                       shared_ranges_count)
+                                       shared_ranges_count,
+                                       shared_overlap_count)
 
 
 def test_parse_assignments():
@@ -51,9 +52,15 @@ def test_identify_number_of_shared_ranges():
     assert actual_answer == 2
 
 
-def test_shared_range_with_test_file():
+def test_shared_range():
     list_of_pairs = parse_assignment_pairs("input_day_4.txt")
     actual_answer = shared_ranges_count(list_of_pairs)
 
     assert actual_answer == 515
 
+
+def test_shared_overlap():
+    list_of_pairs = parse_assignment_pairs("input_day_4.txt")
+    actual_answer = shared_overlap_count(list_of_pairs)
+
+    assert actual_answer == 883
