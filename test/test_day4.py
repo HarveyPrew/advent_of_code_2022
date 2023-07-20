@@ -55,5 +55,5 @@ def test_shared_range_with_test_file():
     list_of_pairs = parse_assignment_pairs("input_day_4.txt")
     actual_answer = shared_ranges_count(list_of_pairs)
 
-    assert actual_answer == 2
+    assert actual_answer == 515
 

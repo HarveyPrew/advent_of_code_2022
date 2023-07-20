@@ -3,8 +3,7 @@ def parse_assignment_pairs(path):
     list_of_section_assignment_pairs = list()
     with open(path) as f:
         for line in f:
-            section_assignment_pairs = list(line.strip().partition(','))
-            section_assignment_pairs.remove(',')
+            section_assignment_pairs = line.strip().split(',')
             sap = assignments_converter(section_assignment_pairs)
             list_of_section_assignment_pairs.append(sap)
 
@@ -12,38 +11,29 @@ def parse_assignment_pairs(path):
 
 
 def range_extractor(section_assignment):
-    assignment_split = list(section_assignment.partition('-'))
-    assignment_split.remove('-')
-    assignment_range = [eval(i) for i in assignment_split]
-    full_assignment_range = list(range(assignment_range[0],
-                                       assignment_range[1] + 1))
-    return full_assignment_range
+    start, _, end = section_assignment.partition('-')
+    assignment_range = list(range(int(start), int(end) + 1))
+    return assignment_range
 
 
 def assignments_converter(section_assignment_pairs):
-    sap = section_assignment_pairs
-    for assignment in range(len(sap)):
-        sap[assignment] = range_extractor(sap[assignment])
-
+    sap = [range_extractor(assignment) for
+           assignment in section_assignment_pairs]
     return sap
 
 
-def identify_duplicate_ranges(section_assignment_pairs):
-    res = all(ele in section_assignment_pairs[0]
-              for ele in section_assignment_pairs[1])
+def identify_duplicate_ranges(sap):
+    section_assignments1, section_assignments2 = sap
+    set_assignments1 = set(section_assignments1)
+    set_assignments2 = set(section_assignments2)
 
-    if res is False:
-        res = all(ele in section_assignment_pairs[1]
-                  for ele in section_assignment_pairs[0])
-
-    return res
+    return (set_assignments1.issubset(set_assignments2) or
+            set_assignments2.issubset(set_assignments1))
 
 
 def shared_ranges_count(list_of_section_assignment_pairs):
-    shared_range_count = 0
+    duplicate_pair_list = [identify_duplicate_ranges(pair)
+                           for pair in list_of_section_assignment_pairs]
 
-    for pair in list_of_section_assignment_pairs:
-        if identify_duplicate_ranges(pair) is True:
-            shared_range_count += 1
-
+    shared_range_count = sum(bool(x) for x in duplicate_pair_list)
     return shared_range_count
