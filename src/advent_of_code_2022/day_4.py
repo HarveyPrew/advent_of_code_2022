@@ -29,11 +29,14 @@ def assignments_converter(section_assignment_pairs):
 
 
 def identify_duplicate_ranges(section_assignment_pairs):
-    if any(x in section_assignment_pairs[0]
-           for x in section_assignment_pairs[1]):
-        return True
-    else:
-        return False
+    res = all(ele in section_assignment_pairs[0]
+              for ele in section_assignment_pairs[1])
+
+    if res is False:
+        res = all(ele in section_assignment_pairs[1]
+                  for ele in section_assignment_pairs[0])
+
+    return res
 
 
 def shared_ranges_count(list_of_section_assignment_pairs):

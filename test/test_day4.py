@@ -13,7 +13,7 @@ def test_parse_assignments():
 def test_parse_assignments_len():
     list_of_pairs = parse_assignment_pairs("input_day_4.txt")
 
-    assert len(list_of_pairs) == 1
+    assert len(list_of_pairs) == 1000
 
 
 def test_string_to_range():
@@ -32,18 +32,27 @@ def test_identify_full_ranges():
     assert actual_answer is True
 
 
+def test_identify_full_ranges_other_way():
+    section_assignment_pairs = [[1, 2, 3, 4], [1, 2, 3]]
+
+    actual_answer = identify_duplicate_ranges(section_assignment_pairs)
+
+    assert actual_answer is True
+
+
 def test_identify_number_of_shared_ranges():
-    list_of_section_assignment_pairs = [[[1, 2, 3, 4], [2, 3]],
-                                        [[2, 3], [1, 2, 3]],
-                                        [[1, 2, 3, 4], [1, 2, 3]]]
+    list_of_section_assignment_pairs = [[[1, 2, 3, 4, 5], [2, 3]],
+                                        [[4, 5], [1, 2, 3]],
+                                        [[1, 2, 3, 4], [1, 2, 3]],
+                                        [[1, 2, 3, 4, 5], [5, 6, 7]]]
 
     actual_answer = shared_ranges_count(list_of_section_assignment_pairs)
 
-    assert actual_answer == 3
+    assert actual_answer == 2
 
 
 def test_shared_range_with_test_file():
-    list_of_pairs = parse_assignment_pairs("input_day_4_test.txt")
+    list_of_pairs = parse_assignment_pairs("input_day_4.txt")
     actual_answer = shared_ranges_count(list_of_pairs)
 
     assert actual_answer == 2
